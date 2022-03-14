@@ -9,26 +9,26 @@ import (
 	"go.uber.org/zap"
 )
 
-type UserController struct {
+type RewardController struct {
 	ctx  context.Context
 	conf config.AppConfig
 }
 
-func NewUserController(ctx context.Context) *UserController {
-	return &UserController{
+func NewRewardController(ctx context.Context) *RewardController {
+	return &RewardController{
 		ctx:  ctx,
 		conf: config.GetConfig(),
 	}
 }
 
-func (uc *UserController) RegisterUserEvent(w http.ResponseWriter, r *http.Request) {
+func (uc *RewardController) RegisterRewardEvent(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Query().Get("id")
 	if id == "" {
 		zap.L().Error("invalid user id")
 		utils.JSONError(w, http.StatusBadRequest, "invalid user id")
 		return
 	}
-	zap.L().Info("user event", zap.String("id", id))
+	zap.L().Info("reward event", zap.String("id", id))
 
-	utils.JSONSuccess(w, http.StatusOK, "user event registered")
+	utils.JSONSuccess(w, http.StatusOK, "reward event registered")
 }

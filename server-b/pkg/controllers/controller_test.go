@@ -56,7 +56,7 @@ func Test_User(t *testing.T) {
 	defer srv.Close()
 
 	// negative test
-	req, err := http.NewRequest("GET", srv.URL+"/api/user", nil)
+	req, err := http.NewRequest("GET", srv.URL+"/api/reward", nil)
 	require.NoError(t, err)
 
 	client := &http.Client{}
@@ -65,7 +65,7 @@ func Test_User(t *testing.T) {
 	require.Equal(t, 400, resp.StatusCode)
 
 	// positive test
-	req, err = http.NewRequest("GET", srv.URL+"/api/user?id=jkh", nil)
+	req, err = http.NewRequest("GET", srv.URL+"/api/reward?id=jkh", nil)
 	require.NoError(t, err)
 
 	client = &http.Client{}

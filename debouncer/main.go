@@ -34,8 +34,8 @@ func main() {
 	zap.L().Info("redis ping successful")
 
 	// Subscribe to redis expiration events
-	client.SubscribeEx(func(msg string) error {
-		req, err := http.NewRequest(http.MethodGet, conf.API+"/user?id="+msg, nil)
+	client.SubscribeEx(func(id string) error {
+		req, err := http.NewRequest(http.MethodGet, conf.API+"/reward?id="+id, nil)
 		if err != nil {
 			return err
 		}
